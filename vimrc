@@ -18,7 +18,7 @@ let mapleader=","
 
 imap <Tab> <C-P>
 
-let g:turbux_runner = 'tslime'
+let g:turbux_runner = 'vimux'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " benmills/vimux
