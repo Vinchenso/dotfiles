@@ -13,5 +13,3 @@
 	helper = osxkeychain
 [github]
 	user = Vinchenso
-	token = 46c9f6a7dc411e656b3f51fc4778858e2d784ce2
-	tokentype = http
