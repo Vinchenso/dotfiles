@@ -85,3 +85,41 @@ source $ZSH/oh-my-zsh.sh
 
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+github-create(){
+echo "Git init ..."
+	git init
+echo "Git init done"
+
+repo_name=$1
+
+  dir_name=`basename $(pwd)`
+  invalid_credentials=0
+
+  if [ "$repo_name" = "" ]; then
+    echo "  Repo name (hit enter to use '$dir_name')?"
+    read repo_name
+  fi
+
+  if [ "$repo_name" = "" ]; then
+    repo_name=$dir_name
+  fi
+
+  username=`git config github.user`
+
+  if [ "$username" = "" ]; then
+    echo "  Could not find username, run 'git config --global github.user <username>'"
+    invalid_credentials=1
+  fi
+
+	curl -u "$username" https://api.github.com/user/repos -d '{"name":"'$repo_name'"}' 
+	echo "Repo added ..."
+
+	echo "Git added and commited ..."
+	git add . && git commit -m "first commit"
+	echo "Git staged done"
+
+	echo "Adding remote server ..."
+	git remote add origin https://github.com/$username/$repo_name.git
+	echo "Remote server added ..."
+}

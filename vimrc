@@ -14,6 +14,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {"regex": "possibly useless use of a variable in void context"}
+
 let mapleader=","
 
 imap <Tab> <C-P>
@@ -62,3 +68,11 @@ set ignorecase smartcase
 map <Leader>gs :Gstatus<CR>
 map <Leader>gc :Gcommit<CR>
 
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+
+set clipboard=unnamed " use the system clipboard
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
