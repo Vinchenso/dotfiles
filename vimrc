@@ -1,9 +1,7 @@
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
-set background=light
-colorscheme solarized
-call togglebg#map("<F5>")
+syntax enable
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -14,11 +12,23 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_eruby_ruby_quiet_messages =
-    \ {"regex": "possibly useless use of a variable in void context"}
+set t_Co=256
+"let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
+call togglebg#map("<F5>")
+
+"function! BgToggleSol()
+" if &background == "light"
+"    execute ":set background=dark"
+"  else
+"    execute ":set background=light"
+"  endif
+"endfunction
+
+nnoremap <leader>ct :call BgToggleSol()<cr>
+
+
 
 let mapleader=","
 

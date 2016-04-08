@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/chenso/.oh-my-zsh
+export ZSH=/home/chenso/.oh-my-zsh
+
+export TERM=screen-256color
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,7 +55,6 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/Users/chenso/.rbenv/shims:/Users/chenso/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/chenso/.rbenv/shims:/Users/chenso/.bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
