@@ -13,3 +13,5 @@
 	user = Vinchenso
 [alias]
 	co = checkout
+[credential]
+	helper = cache --timeout 3600
