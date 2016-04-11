@@ -11,6 +11,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_cucumber_cucumber_args="--profile syntastic"
 
 set t_Co=256
 "let g:solarized_termcolors=256
@@ -27,6 +28,7 @@ call togglebg#map("<F5>")
 "endfunction
 
 nnoremap <leader>ct :call BgToggleSol()<cr>
+:filetype plugin on
 
 
 
@@ -81,7 +83,7 @@ map <Leader>gc :Gcommit<CR>
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-set clipboard=unnamed " use the system clipboard
+set clipboard=unnamed,unnamedplus
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
