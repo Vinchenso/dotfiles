@@ -15,22 +15,12 @@ let g:syntastic_cucumber_cucumber_args="--profile syntastic"
 
 set t_Co=256
 "let g:solarized_termcolors=256
-set background=light
+set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
-"function! BgToggleSol()
-" if &background == "light"
-"    execute ":set background=dark"
-"  else
-"    execute ":set background=light"
-"  endif
-"endfunction
-
 nnoremap <leader>ct :call BgToggleSol()<cr>
 :filetype plugin on
-
-
 
 let mapleader=","
 
