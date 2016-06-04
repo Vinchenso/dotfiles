@@ -13,5 +13,8 @@
 	user = Vinchenso
 [alias]
 	co = checkout
+	a = add
+	ci = commit
 [credential]
 	helper = cache --timeout 3600
+
