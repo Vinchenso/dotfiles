@@ -47,7 +47,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 map <C-n> :NERDTreeToggle<CR>
 
 autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " jgdavey/vim-turbux
@@ -102,3 +102,5 @@ set clipboard=unnamed,unnamedplus
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
