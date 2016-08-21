@@ -3,13 +3,14 @@ syntax on
 filetype plugin indent on
 syntax enable
 :set number
+:set cursorcolumn
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cucumber_cucumber_args="--profile syntastic"
@@ -104,3 +105,18 @@ set splitbelow
 set splitright
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
+
+"""""""""""""""""""""""
+"INdent Guide
+"""""""""""""""""""""""
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+let g:indent_guides_guide_size=1
+set ts=2 sw=2 et
+
+"""""""""""""""""""""
+"EMMET
+"""""""""""""""""""""
+
+let g:user_emmet_mode='a'    "enable all function in all mode."
+
