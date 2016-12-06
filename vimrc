@@ -4,6 +4,7 @@ filetype plugin indent on
 syntax enable
 :set number
 :set cursorcolumn
+:set colorcolumn=80
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -120,3 +121,19 @@ set ts=2 sw=2 et
 
 let g:user_emmet_mode='a'    "enable all function in all mode."
 
+"""""""""""""""""""""
+"Ctrl P
+"""""""""""""""""""""
+set wildignore+=*/tmp/*                                     " ctrlp - ignore files in tmp directories
+set wildignore+=*/target/*                                  " ctrlp - ignore files in target directories
+set wildignore+=*/build/*                                   " ctrlp - ignore gradle build directories
+set wildignore+=*.so                                        " ctrlp - ignore .so files
+set wildignore+=*.o                                         " ctrlp - ignore .o files
+set wildignore+=*.class                                     " ctrlp - ignore .class files
+set wildignore+=*.swp                                       " ctrlp - ignore .swp files
+set wildignore+=*.zip                                       " ctrlp - ignore .zip files
+set wildignore+=*.pdf                                       " ctrlp - ignore .pdf files
+set wildignore+=*/node_modules/*                            " ctrlp - ignore node modules
+set wildignore+=*/bower_components/*                        " ctrlp - ignore bower components
+set wildignore+=*/dist/*                                    " ctrlp - ignore grunt build directory
+let g:ctrlp_show_hidden = 1                                 " ctrlp - search for hidden files
