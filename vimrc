@@ -15,6 +15,8 @@ set statusline+=%*
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cucumber_cucumber_args="--profile syntastic"
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 set t_Co=256
 "let g:solarized_termcolors=256
@@ -137,3 +139,9 @@ set wildignore+=*/node_modules/*                            " ctrlp - ignore nod
 set wildignore+=*/bower_components/*                        " ctrlp - ignore bower components
 set wildignore+=*/dist/*                                    " ctrlp - ignore grunt build directory
 let g:ctrlp_show_hidden = 1                                 " ctrlp - search for hidden files
+
+"""""""""""""""""""""
+"Inserting Blank Lines
+"""""""""""""""""""""
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
