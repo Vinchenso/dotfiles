@@ -10,7 +10,7 @@ set hlsearch
 set incsearch
 autocmd BufRead,BufNewFile *.vue set filetype=vue
 let mapleader=","
-
+set tags+=.git/tags
 nnoremap <silent> <C-a> :nohl<CR><C-l>
 
 set statusline+=%#warningmsg#
@@ -27,14 +27,15 @@ let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [ "ruby", "javascript" ] }
 nnoremap <leader>x :SyntasticCheck<CR>
 nnoremap <leader>c :SyntasticReset<CR>    " Scan file again for syntax erors
-
+ " Index ctags from any project, including those outside Rails
+    map <Leader>ct :!ctags -R .<CR>
 set t_Co=256
 "let g:solarized_termcolors=256
 "set background=dark
 colorscheme maui
 "call togglebg#map("<F5>")
 
-nnoremap <leader>ct :call BgToggleSol()<cr>
+"nnoremap <leader>ct :call BgToggleSol()<cr>
 :filetype plugin on
 
 imap <Tab> <C-P>
@@ -178,3 +179,10 @@ nnoremap <C-p> :FZF<CR>
     cnoremap QA qa
     cnoremap qA qa
     cnoremap Q! q!
+
+" Always use vertical diffs
+    set diffopt+=vertical
+
+
+
+
