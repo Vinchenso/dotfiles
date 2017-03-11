@@ -2,7 +2,8 @@
 export ZSH=/home/chenso/.oh-my-zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 #export TERM=screen-256color
-
+export VISUAL=vim
+export EDITOR="$VISUAL"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
