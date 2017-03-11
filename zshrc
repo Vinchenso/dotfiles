@@ -88,6 +88,8 @@ source $ZSH/oh-my-zsh.sh
 
 
 alias tmux="tmux -2"
+
+
 github-create(){
 echo "Git init ..."
 	git init
@@ -131,7 +133,8 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-
+# load aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
 
 
 
