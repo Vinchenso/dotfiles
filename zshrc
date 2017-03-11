@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/chenso/.oh-my-zsh
-
-export TERM=screen-256color
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#export TERM=screen-256color
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -51,8 +51,10 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
 
+plugins=(git)
+plugins=(zsh-autosuggestions)
+plugins=(zsh-syntax-highlighting)
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -85,8 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
+alias tmux="tmux -2"
 github-create(){
 echo "Git init ..."
 	git init
@@ -124,3 +125,14 @@ repo_name=$1
 	git remote add origin https://github.com/$username/$repo_name.git
 	echo "Remote server added ..."
 }
+export FZF_DEFAULT_COMMAND='ag -g ""'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+
+
+
+
+
