@@ -8,6 +8,9 @@ set rtp+=~/.fzf
 :set colorcolumn=80
 set hlsearch
 set incsearch
+filetype off
+set nocompatible
+filetype plugin on
 autocmd BufRead,BufNewFile *.vue set filetype=vue
 let mapleader=","
 set tags+=.git/tags
@@ -17,16 +20,17 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cucumber_cucumber_args="--profile syntastic"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_cucumber_cucumber_args="--profile syntastic"
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
+"let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [ "ruby", "javascript" ] }
-nnoremap <leader>x :SyntasticCheck<CR>
-nnoremap <leader>c :SyntasticReset<CR>    " Scan file again for syntax erors
+nnoremap <leader>c :SyntasticCheck<CR>
+nnoremap <leader>x :SyntasticReset<CR>    " Scan file again for syntax erors
+
  " Index ctags from any project, including those outside Rails
     map <Leader>ct :!ctags -R .<CR>
 set t_Co=256
@@ -135,19 +139,19 @@ let g:user_emmet_mode='a'    "enable all function in all mode."
 """""""""""""""""""""
 "Ctrl P
 """""""""""""""""""""
-set wildignore+=*/tmp/*                                     " ctrlp - ignore files in tmp directories
-set wildignore+=*/target/*                                  " ctrlp - ignore files in target directories
-set wildignore+=*/build/*                                   " ctrlp - ignore gradle build directories
-set wildignore+=*.so                                        " ctrlp - ignore .so files
-set wildignore+=*.o                                         " ctrlp - ignore .o files
-set wildignore+=*.class                                     " ctrlp - ignore .class files
-set wildignore+=*.swp                                       " ctrlp - ignore .swp files
-set wildignore+=*.zip                                       " ctrlp - ignore .zip files
-set wildignore+=*.pdf                                       " ctrlp - ignore .pdf files
-set wildignore+=*/node_modules/*                            " ctrlp - ignore node modules
-set wildignore+=*/bower_components/*                        " ctrlp - ignore bower components
-set wildignore+=*/dist/*                                    " ctrlp - ignore grunt build directory
-let g:ctrlp_show_hidden = 1                                 " ctrlp - search for hidden files
+"set wildignore+=*/tmp/*                                     " ctrlp - ignore files in tmp directories
+"set wildignore+=*/target/*                                  " ctrlp - ignore files in target directories
+"set wildignore+=*/build/*                                   " ctrlp - ignore gradle build directories
+"set wildignore+=*.so                                        " ctrlp - ignore .so files
+"set wildignore+=*.o                                         " ctrlp - ignore .o files
+"set wildignore+=*.class                                     " ctrlp - ignore .class files
+"set wildignore+=*.swp                                       " ctrlp - ignore .swp files
+"set wildignore+=*.zip                                       " ctrlp - ignore .zip files
+"set wildignore+=*.pdf                                       " ctrlp - ignore .pdf files
+"set wildignore+=*/node_modules/*                            " ctrlp - ignore node modules
+"set wildignore+=*/bower_components/*                        " ctrlp - ignore bower components
+"set wildignore+=*/dist/*                                    " ctrlp - ignore grunt build directory
+"let g:ctrlp_show_hidden = 1                                 " ctrlp - search for hidden files
 
 """""""""""""""""""""
 "Inserting Blank Lines
@@ -179,6 +183,9 @@ nnoremap <C-p> :FZF<CR>
     cnoremap QA qa
     cnoremap qA qa
     cnoremap Q! q!
+    cnoremap W! w!
+    cnoremap W w
+    cnoremap Q q
 
 " Always use vertical diffs
     set diffopt+=vertical
