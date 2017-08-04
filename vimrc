@@ -1,4 +1,37 @@
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+Plug 'rking/ag.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'sirver/ultisnips'
+Plug 'bling/vim-airline'
+Plug 'chiel92/vim-autoformat'
+Plug 'tpope/vim-bundler'
+Plug 'flazz/vim-colorschemes'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-surround'
+Plug 'janko-m/vim-test'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+Plug 'posva/vim-vue'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'sheerun/vim-polyglot'
+Plug 'w0rp/ale'
+call plug#end()
+
+
 syntax on
 filetype plugin indent on
 syntax enable
@@ -16,23 +49,8 @@ let mapleader=","
 set tags+=.git/tags
 nnoremap <silent> <C-a> :nohl<CR><C-l>
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_cucumber_cucumber_args="--profile syntastic"
-let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_javascript_eslint_exec = 'eslint_d'
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [ "ruby", "javascript" ] }
-nnoremap <leader>c :SyntasticCheck<CR>
-nnoremap <leader>x :SyntasticReset<CR>    " Scan file again for syntax erors
-
- " Index ctags from any project, including those outside Rails
-    map <Leader>ct :!ctags -R .<CR>
+" Index ctags from any project, including those outside Rails
+map <Leader>ct :!ctags -R .<CR>
 set t_Co=256
 "let g:solarized_termcolors=256
 "set background=dark
@@ -114,7 +132,7 @@ map <Leader>gc :Gcommit<CR>
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-set clipboard=unnamed,unnamedplus
+"set clipboard=unnamed,unnamedplus
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -130,6 +148,7 @@ hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_guide_size=1
 set ts=2 sw=2 et
 let g:indent_guides_start_level=2
+
 """""""""""""""""""""
 "EMMET
 """""""""""""""""""""
@@ -173,22 +192,22 @@ let g:vim_jsx_pretty_colorful_config = 1 " default 0
 
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 let g:fzf_files_options =
-  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+      \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
 nnoremap <C-p> :FZF<CR>
 
-  " command typo mapping
-    cnoremap WQ wq
-    cnoremap Wq wq
-    cnoremap QA qa
-    cnoremap qA qa
-    cnoremap Q! q!
-    cnoremap W! w!
-    cnoremap W w
-    cnoremap Q q
+" command typo mapping
+cnoremap WQ wq
+cnoremap Wq wq
+cnoremap QA qa
+cnoremap qA qa
+cnoremap Q! q!
+cnoremap W! w!
+cnoremap W w
+cnoremap Q q
 
 " Always use vertical diffs
-    set diffopt+=vertical
+set diffopt+=vertical
 
 
 
