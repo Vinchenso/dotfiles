@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/chenso/.oh-my-zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+export ZSH=~/.oh-my-zsh
 #export TERM=screen-256color
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -56,6 +55,7 @@ ZSH_THEME="spaceship"
 plugins=(git)
 plugins=(zsh-autosuggestions)
 plugins=(zsh-syntax-highlighting)
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -88,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-alias tmux="tmux -2"
+#alias tmux="tmux -2"
 
 
 github-create(){
@@ -137,6 +137,5 @@ eval "$(rbenv init -)"
 # load aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-
-
+alias tmux="env TERM=xterm-256color tmux"
 
