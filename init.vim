@@ -48,14 +48,14 @@ set shell=/bin/bash
 
 set encoding=utf-8
 set showcmd                               " display incomplete commands
-set relativenumber
+" set relativenumber
 set cursorline                            " Highlight row
 set cursorcolumn                          " Highlight column
 
 "set t_Co=256
 
 "" Spacing
-set nowrap                          " don't wrap lines
+" set nowrap                          " don't wrap lines
 set tabstop=2 shiftwidth=2          " a tab is two spaces (or set this to 4)
 set shiftround
 set expandtab                       " use spaces, not tabs (optional)
@@ -91,8 +91,8 @@ filetype plugin on
 
 
 
-autocmd InsertEnter * :set number         " Set absolute numbering while in insert mode
-autocmd InsertLeave * :set relativenumber " Set relative numbering while out of insert mode
+" autocmd InsertEnter * :set number         " Set absolute numbering while in insert mode
+" autocmd InsertLeave * :set relativenumber " Set relative numbering while out of insert mode
 
 call deoplete#enable()
 
