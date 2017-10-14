@@ -10,8 +10,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'kien/rainbow_parentheses.vim'   " Colourful parentheses
 Plug 'airblade/vim-gitgutter'         " Show git changes in the gutter
 Plug 'sheerun/vim-polyglot'           " Language support
-Plug 'tpope/vim-surround'                        " Easily surround words with tags
-Plug 'tpope/vim-fugitive'                        " Git integration
+Plug 'tpope/vim-surround'             " Easily surround words with tags
+Plug 'tpope/vim-fugitive'             " Git integration
 Plug 'janko-m/vim-test'
 Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
@@ -28,10 +28,9 @@ Plug 'tpope/vim-commentary'
 " Ruby/Rails
 Plug 'tpope/vim-endwise'              " Add 'end' after 'if', 'do', 'def' keywords
 Plug 'tpope/vim-rails'                " Rails support in Vim
-Plug 'rking/ag.vim'                              " Searching text across file directory
+Plug 'rking/ag.vim'                   " Searching text across file directory
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'} 
 
 " Theme/Styling
 Plug 'vim-airline/vim-airline-themes'
@@ -93,8 +92,27 @@ filetype plugin on
 
 " autocmd InsertEnter * :set number         " Set absolute numbering while in insert mode
 " autocmd InsertLeave * :set relativenumber " Set relative numbering while out of insert mode
+"
+" =====================================
+"  Deoplete
+" =====================================
 
 call deoplete#enable()
+
+if has('nvim')
+  " Enable deoplete on startup
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_ignore_case = 1
+  let g:deoplete#enable_smart_case = 1
+  let g:deoplete#enable_camel_case = 1
+  let g:deoplete#enable_refresh_always = 1
+  let g:deoplete#max_abbr_width = 0
+  let g:deoplete#max_menu_width = 0
+endif
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " =====================================
 "  FZF
@@ -149,18 +167,18 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
 "let g:onedark_termcolors=256
 
 if exists('$TMUX') || exists('$SSH_TTY')
-"  set t_ut=
+  "  set t_ut=
 endif
 
 if (empty($TMUX))
   if (has("nvim"))
-"    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    "    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
 
   if has("termguicolors")     " set true colors
-   " set t_8f=\[[38;2;%lu;%lu;%lum
-   " set t_8b=\[[48;2;%lu;%lu;%lum
-"    set termguicolors
+    " set t_8f=\[[38;2;%lu;%lu;%lum
+    " set t_8b=\[[48;2;%lu;%lu;%lum
+    "    set termguicolors
   endif
 endif
 
