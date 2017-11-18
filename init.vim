@@ -29,7 +29,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'              " Add 'end' after 'if', 'do', 'def' keywords
 Plug 'tpope/vim-rails'                " Rails support in Vim
 Plug 'rking/ag.vim'                   " Searching text across file directory
-
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'} 
 
 " Theme/Styling
