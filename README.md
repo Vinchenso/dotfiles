@@ -1,3 +1,8 @@
 # dotfileis
 
-I editted this file with Vim
+## Todo
+
+Install vim-gtk for clipboard support
+```
+sudo apt-get install vim-gtk
+```

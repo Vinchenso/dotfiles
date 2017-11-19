@@ -1,3 +1,10 @@
+" Install Vim Plug if not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'rking/ag.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -19,6 +26,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-surround'
@@ -30,7 +38,6 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 call plug#end()
-
 
 syntax on
 filetype plugin indent on
@@ -132,7 +139,7 @@ map <Leader>gc :Gcommit<CR>
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-"set clipboard=unnamed,unnamedplus
+set clipboard=unnamedplus
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
