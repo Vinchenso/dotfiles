@@ -12,11 +12,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'sirver/ultisnips'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'chiel92/vim-autoformat'
-Plug 'tpope/vim-bundler'
-Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
@@ -27,16 +25,18 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-surround'
 Plug 'janko-m/vim-test'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'posva/vim-vue'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
+Plug 'kristijanhusak/vim-hybrid-material'
 call plug#end()
 
 syntax on
@@ -53,23 +53,38 @@ set nocompatible
 filetype plugin on
 autocmd BufRead,BufNewFile *.vue set filetype=vue
 let mapleader=","
-set tags+=.git/tags
+set tags=./tags;
 nnoremap <silent> <C-a> :nohl<CR><C-l>
+
+" Remove trailing whitespace on save for ruby files.
+au BufWritePre *.rb :%s/\s\+$//e
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
+
+" Use Silver Searcher instead of grep
+set grepprg=ag
 
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
 set t_Co=256
-"let g:solarized_termcolors=256
-"set background=dark
-colorscheme maui
-"call togglebg#map("<F5>")
-
-"nnoremap <leader>ct :call BgToggleSol()<cr>
 :filetype plugin on
 
 imap <Tab> <C-P>
 
 let g:turbux_runner = 'vimux'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Color scheme settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:enable_bold_font = 1
+let g:enable_italic_font = 1
+
+set background=dark
+colorscheme hybrid_reverse
+let g:airline_theme = "hybrid"
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " benmills/vimux
@@ -129,6 +144,7 @@ let g:javascript_enable_domhtmlcss = 1
 set foldmethod=syntax
 set foldlevel=20
 nnoremap <Space> za
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git & Github
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -161,23 +177,6 @@ let g:indent_guides_start_level=2
 """""""""""""""""""""
 
 let g:user_emmet_mode='a'    "enable all function in all mode."
-
-"""""""""""""""""""""
-"Ctrl P
-"""""""""""""""""""""
-"set wildignore+=*/tmp/*                                     " ctrlp - ignore files in tmp directories
-"set wildignore+=*/target/*                                  " ctrlp - ignore files in target directories
-"set wildignore+=*/build/*                                   " ctrlp - ignore gradle build directories
-"set wildignore+=*.so                                        " ctrlp - ignore .so files
-"set wildignore+=*.o                                         " ctrlp - ignore .o files
-"set wildignore+=*.class                                     " ctrlp - ignore .class files
-"set wildignore+=*.swp                                       " ctrlp - ignore .swp files
-"set wildignore+=*.zip                                       " ctrlp - ignore .zip files
-"set wildignore+=*.pdf                                       " ctrlp - ignore .pdf files
-"set wildignore+=*/node_modules/*                            " ctrlp - ignore node modules
-"set wildignore+=*/bower_components/*                        " ctrlp - ignore bower components
-"set wildignore+=*/dist/*                                    " ctrlp - ignore grunt build directory
-"let g:ctrlp_show_hidden = 1                                 " ctrlp - search for hidden files
 
 """""""""""""""""""""
 "Inserting Blank Lines
@@ -216,6 +215,4 @@ cnoremap Q q
 " Always use vertical diffs
 set diffopt+=vertical
 
-
-
-
+let g:deoplete#enable_at_startup = 1
