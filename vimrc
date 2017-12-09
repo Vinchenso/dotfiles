@@ -15,7 +15,6 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chiel92/vim-autoformat'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -31,7 +30,7 @@ Plug 'janko-m/vim-test'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'posva/vim-vue'
-Plug 'Shougo/deoplete.nvim'
+Plug 'maralla/completor.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'sheerun/vim-polyglot'
@@ -72,8 +71,6 @@ set t_Co=256
 
 imap <Tab> <C-P>
 
-let g:turbux_runner = 'vimux'
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Color scheme settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -90,11 +87,6 @@ let g:airline_theme = "hybrid"
 " benmills/vimux
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:VimuxUseNearestPane = 1
-" Setup filetype specific <leader>a commands in ftplugin
-
-nnoremap <leader>l :call VimuxRunLastCommand()<CR>
-nnoremap <leader>vp :call VimuxPromptCommand()<CR>
-nnoremap <leader>vi :call VimuxInterruptRunner()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -107,13 +99,11 @@ autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" jgdavey/vim-turbux
+" vim-test
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-map <leader>t <Plug>SendTestToTmux
-map <leader>s <Plug>SendFocusedTestToTmux
-let g:turbux_command_rspec = 'rspec'
-let g:turbux_command_cucumber = 'cucumber'
+let test#strategy = "vimux"
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tabs and indentation
@@ -164,7 +154,7 @@ set splitright
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
 
 """""""""""""""""""""""
-"INdent Guide
+"Indent Guide
 """""""""""""""""""""""
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
@@ -191,6 +181,13 @@ map <S-Enter> O<ESC>
 let g:vim_jsx_pretty_enable_jsx_highlight = 0 " default 1
 let g:vim_jsx_pretty_colorful_config = 1 " default 0
 
+"""""""""""""""""""""""
+"Completor
+"""""""""""""""""""""""
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " =====================================
 "  FZF
 " =====================================
@@ -214,5 +211,3 @@ cnoremap Q q
 
 " Always use vertical diffs
 set diffopt+=vertical
-
-let g:deoplete#enable_at_startup = 1
