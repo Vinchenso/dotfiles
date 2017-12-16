@@ -189,9 +189,18 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " =====================================
+"  Ale
+" =====================================
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+" =====================================
 "  FZF
 " =====================================
 " set fzf's default input to AG instead of find. This also removes gitignore etc
+
 
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 let g:fzf_files_options =
