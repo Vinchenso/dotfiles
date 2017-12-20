@@ -138,4 +138,3 @@ eval "$(rbenv init -)"
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 alias tmux="env TERM=xterm-256color tmux"
-

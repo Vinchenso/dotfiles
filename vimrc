@@ -1,7 +1,7 @@
 " Install Vim Plug if not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
 
@@ -31,11 +31,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'posva/vim-vue'
 Plug 'maralla/completor.vim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
-Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'rakr/vim-one'
 call plug#end()
 
 syntax on
@@ -66,7 +64,6 @@ set grepprg=ag
 
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
-set t_Co=256
 :filetype plugin on
 
 imap <Tab> <C-P>
@@ -74,14 +71,16 @@ imap <Tab> <C-P>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Color scheme settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme one
+" set background=dark " for the dark version
+set background=light " for the light version
 
-let g:enable_bold_font = 1
-let g:enable_italic_font = 1
+set termguicolors
+let g:airline_theme='one'
+let g:one_allow_italics = 1
 
-set background=dark
-colorscheme hybrid_reverse
-let g:airline_theme = "hybrid"
-
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " benmills/vimux
@@ -193,8 +192,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " =====================================
 
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
+      \   'javascript': ['eslint'],
+      \}
 
 " =====================================
 "  FZF
