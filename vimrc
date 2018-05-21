@@ -9,6 +9,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'rking/ag.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
@@ -29,7 +32,6 @@ Plug 'tpope/vim-surround'
 Plug 'janko-m/vim-test'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-Plug 'posva/vim-vue'
 Plug 'maralla/completor.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
@@ -48,7 +50,7 @@ set incsearch
 filetype off
 set nocompatible
 filetype plugin on
-autocmd BufRead,BufNewFile *.vue set filetype=vue
+set filetype=vue.html
 let mapleader=","
 set tags=./tags;
 nnoremap <silent> <C-a> :nohl<CR><C-l>
@@ -103,12 +105,22 @@ autocmd StdinReadPre * let s:std_in=1
 
 let test#strategy = "vimux"
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-prettier
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+" let g:prettier#exec_cmd_async = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tabs and indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tabstop=2 shiftwidth=2 " tabs rendered as 2 spaces
+set tabstop=2 
+set shiftwidth=2 " tabs rendered as 2 spaces
 set expandtab " expand tabs to spaces (should this be filemode dependent?
+set smarttab
 
 set ai "Auto indent
 set si "Smart indent
@@ -120,6 +132,19 @@ set noswapfile
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 
+" Set shiftwidth to 2 for heavily nested filetypes
+autocmd FileType vue.html setlocal shiftwidth=2
+autocmd FileType vue.html setlocal tabstop=2
+autocmd FileType vue.html setlocal softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=2
+autocmd FileType javascript setlocal tabstop=2
+autocmd FileType javascript setlocal softtabstop=2
+autocmd FileType html setlocal shiftwidth=2
+autocmd FileType html setlocal tabstop=2
+autocmd FileType html setlocal softtabstop=2
+autocmd FileType scss setlocal shiftwidth=2
+autocmd FileType scss setlocal tabstop=2
+autocmd FileType scss setlocal softtabstop=2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto-format
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
