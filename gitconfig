@@ -3,7 +3,7 @@
 	smudge = git lfs smudge %f
 	required = true
 [user]
-	name = Vinchenso
+	name = Vinchenso Kendall
 	email = chensok@gmail.com
 [color]
 	ui = auto

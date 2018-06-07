@@ -18,13 +18,18 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chiel92/vim-autoformat'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
+Plug 'matze/vim-move'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-endwise'
+Plug 'vim-scripts/matchit.zip'
+Plug 'valloric/matchtagalways'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/vim-easy-align'
+" Plug 'mustache/vim-mustache-handlebars'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-commentary'
 Plug 'vim-ruby/vim-ruby'
@@ -71,11 +76,28 @@ map <Leader>ct :!ctags -R .<CR>
 imap <Tab> <C-P>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Move Settins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" let g:move_key_modifier = 'M'
+
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Color scheme settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme one
-" set background=dark " for the dark version
-set background=light " for the light version
+set background=dark " for the dark version
+" set background=light " for the light version
 
 set termguicolors
 let g:airline_theme='one'
@@ -112,7 +134,7 @@ let test#strategy = "vimux"
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
-" let g:prettier#exec_cmd_async = 1
+let g:prettier#exec_cmd_async = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tabs and indentation
@@ -219,6 +241,11 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \}
+
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+
+let g:ale_fix_on_save = 1
 
 " =====================================
 "  FZF
