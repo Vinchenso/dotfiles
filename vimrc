@@ -9,9 +9,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'rking/ag.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+" Plug 'prettier/vim-prettier', {
+  " \ 'do': 'yarn install',
+  " \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
@@ -21,11 +21,11 @@ Plug 'chiel92/vim-autoformat'
 Plug 'matze/vim-move'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'maxmellon/vim-jsx-pretty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-endwise'
 Plug 'vim-scripts/matchit.zip'
-Plug 'valloric/matchtagalways'
+" Plug 'valloric/matchtagalways'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/vim-easy-align'
@@ -45,17 +45,16 @@ call plug#end()
 
 syntax on
 filetype plugin indent on
-syntax enable
 set rtp+=~/.fzf
-:set number
-:set cursorcolumn
-:set colorcolumn=80
+set number
+set cursorcolumn
+set colorcolumn=80
 set hlsearch
 set incsearch
-filetype off
 set nocompatible
-filetype plugin on
-set filetype=vue.html
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+" set filetype=vue.html
+set foldmethod=indent
 let mapleader=","
 set tags=./tags;
 nnoremap <silent> <C-a> :nohl<CR><C-l>
@@ -116,7 +115,7 @@ let g:VimuxUseNearestPane = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeToggle<CR>
 
 autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -129,12 +128,13 @@ let test#strategy = "vimux"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-prettier
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
-let g:prettier#exec_cmd_async = 1
+" let g:prettier#exec_cmd_async = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tabs and indentation
@@ -177,7 +177,6 @@ noremap <F3> :Autoformat<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:javascript_enable_domhtmlcss = 1
-set foldmethod=syntax
 set foldlevel=20
 nnoremap <Space> za
 
@@ -213,7 +212,11 @@ let g:indent_guides_start_level=2
 """""""""""""""""""""
 
 let g:user_emmet_mode='a'    "enable all function in all mode."
-
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
 """""""""""""""""""""
 "Inserting Blank Lines
 """""""""""""""""""""
@@ -224,8 +227,8 @@ map <S-Enter> O<ESC>
 "JSX Pretty
 """""""""""""""""""""""
 
-let g:vim_jsx_pretty_enable_jsx_highlight = 0 " default 1
-let g:vim_jsx_pretty_colorful_config = 1 " default 0
+" let g:vim_jsx_pretty_enable_jsx_highlight = 0 " default 1
+" let g:vim_jsx_pretty_colorful_config = 1 " default 0
 
 """""""""""""""""""""""
 "Completor
