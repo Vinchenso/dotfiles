@@ -13,3 +13,5 @@ alias gp='git push'
 alias gcam='git commit -am'
 alias gd='git diff'
 alias clipboard='xclip -sel clip'
+alias vim=nvim
+alias vi=vim
