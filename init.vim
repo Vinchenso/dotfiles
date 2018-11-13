@@ -1,8 +1,8 @@
 " Install Vim Plug if not installed
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  silent !curl -fLo ~/.config/nvim/site/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
+  autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim 
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -19,6 +19,7 @@ Plug 'benmills/vimux'
 Plug 'tpope/vim-eunuch'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'chiel92/vim-autoformat'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'  }
@@ -67,6 +68,7 @@ call plug#end()
 set nocompatible                    " choose no compatibility with legacy vi
 set shell=/bin/bash
 set autoread
+au WinEnter,CursorHold,CursorHoldI * checktime
 
 set encoding=utf-8
 set showcmd                               " display incomplete commands
@@ -89,7 +91,7 @@ set backspace=indent,eol,start      " backspace through everything in insert mod
 set undofile
 set undodir="$HOME/.VIM_UNDO_FILES"
 
-set spell
+" set spell
 set cmdheight=2
 " set splitbelow
 "
@@ -202,11 +204,32 @@ let g:deoplete#sources#ternjs#filetypes = [
 " =====================================
 "  FZF
 " =====================================
-" set fzf's default input to AG instead of find. This also removes gitignore etc
 
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
-let g:fzf_files_options =
-      \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+    let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-i': 'split',
+      \ 'ctrl-s': 'vsplit' }
+
+nnoremap ? :GFiles<CR>
+
+" let g:fzf_files_options =
+"       \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+"
+"
+set rtp+=~/.fzf
+
 
 nnoremap <C-p> :FZF<CR>
 
@@ -279,6 +302,11 @@ let g:ale_fixers = {
       \   'javascript': ['eslint'],
       \   'css': ['prettier'],
       \}
+
+let g:ale_linters = {
+\   'javascript': ['eslint', 'prettier'],
+\   'html': []
+\  }
 
 let g:ale_fix_on_save = 1
 
