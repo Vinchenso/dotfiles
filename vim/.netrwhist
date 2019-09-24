@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/chenso/coding/directorDash/app/views/application'
-let g:netrw_dirhist_2='/home/chenso/coding/Instant_BDD_blog/features/step_definitions'
-let g:netrw_dirhist_3='/home/chenso/coding/pundit_clearance/db'
-let g:netrw_dirhist_4='/home/chenso/coding/pundit_clearance/db/migrate'
-let g:netrw_dirhist_5='/home/chenso/coding/adminDash/app/views/lineitems'
-let g:netrw_dirhist_6='/home/chenso/coding/restaurants/app/models'

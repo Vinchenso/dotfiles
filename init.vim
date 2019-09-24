@@ -19,6 +19,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'tpope/vim-eunuch'
 Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
@@ -27,34 +28,14 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'  }
 Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine'
 
-Plug 'Shougo/defx.nvim'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'matze/vim-move'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-
 " Ruby/Rails
 Plug 'tpope/vim-endwise'              " Add 'end' after 'if', 'do', 'def' keywords
-Plug 'tpope/vim-rails'                " Rails support in Vim
-Plug 'rking/ag.vim'                   " Searching text across file directory
-
-"" Autocompletion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'ternjs/tern_for_vim'
-Plug 'shougo/neoinclude.vim'
-Plug 'shougo/neco-vim'
-Plug 'othree/csscomplete.vim'
-Plug 'othree/html5.vim'
-Plug 'othree/xml.vim'
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/neco-syntax'
 
 " Theme/Styling
 Plug 'vim-airline/vim-airline-themes'
@@ -311,4 +292,16 @@ let g:ale_linters = {
 
 let g:ale_fix_on_save = 1
 
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
