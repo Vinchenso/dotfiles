@@ -3,6 +3,5 @@ tags
 !tags/
 tags.lock
 tags.temp
-vim/
 node-modules
 coverage
