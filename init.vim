@@ -27,7 +27,7 @@ Plug 'chiel92/vim-autoformat'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'  }
 Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine'
-
+Plug 'vim-scripts/vim-auto-save'  
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'matze/vim-move'
@@ -205,6 +205,7 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
       \ 'ctrl-s': 'vsplit' }
 
 nnoremap ? :GFiles<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " let g:fzf_files_options =
 "       \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
@@ -318,3 +319,14 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+"TAB enhancments
+ 
+map <leader>tn :tabnew<cr>
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+
+"" AutoSave
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
+
