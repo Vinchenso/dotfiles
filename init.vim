@@ -13,6 +13,7 @@ Plug 'kien/rainbow_parentheses.vim'   " Colourful parentheses
 Plug 'sheerun/vim-polyglot'           " Language support
 Plug 'tpope/vim-surround'             " Easily surround words with tags
 Plug 'tpope/vim-dispatch'
+Plug 'vim-test/vim-test'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-eunuch'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
