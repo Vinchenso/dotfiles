@@ -2,11 +2,19 @@
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+
+function! UpdateRemotePlugins(...)
+  " Needed to refresh runtime files
+  let &rtp=&rtp
+  UpdateRemotePlugins
+endfunction
+
+Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
 
 Plug 'wellle/tmux-complete.vim'
 Plug 'kien/rainbow_parentheses.vim'   " Colourful parentheses
@@ -102,6 +110,14 @@ xnoremap p pgvy
 
 filetype plugin on
 
+" Key bindings can be changed, see below
+call wilder#setup({'modes': [':', '/', '?']})
+
+" 'highlighter' : applies highlighting to the candidates
+call wilder#set_option('renderer', wilder#popupmenu_renderer({
+      \ 'highlighter': wilder#basic_highlighter(),
+      \ }))
+
 "---------------------------------------------------------------
 "           Other Key bindings and Settings
 "---------------------------------------------------------------
@@ -124,7 +140,7 @@ filetype plugin on
 " --color: Search color options
 " command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
-    let g:fzf_action = {
+let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-i': 'split',
       \ 'ctrl-s': 'vsplit' }
@@ -382,38 +398,38 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Explorer
 let g:coc_explorer_global_presets = {
-\   '.vim': {
-\     'root-uri': '~/.vim',
-\   },
-\   'tab': {
-\     'position': 'tab',
-\     'quit-on-open': v:true,
-\   },
-\   'floating': {
-\     'position': 'floating',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingTop': {
-\     'position': 'floating',
-\     'floating-position': 'center-top',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingLeftside': {
-\     'position': 'floating',
-\     'floating-position': 'left-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingRightside': {
-\     'position': 'floating',
-\     'floating-position': 'right-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   }
-\ }
+      \   '.vim': {
+        \     'root-uri': '~/.vim',
+        \   },
+        \   'tab': {
+          \     'position': 'tab',
+          \     'quit-on-open': v:true,
+          \   },
+          \   'floating': {
+            \     'position': 'floating',
+            \     'open-action-strategy': 'sourceWindow',
+            \   },
+            \   'floatingTop': {
+              \     'position': 'floating',
+              \     'floating-position': 'center-top',
+              \     'open-action-strategy': 'sourceWindow',
+              \   },
+              \   'floatingLeftside': {
+                \     'position': 'floating',
+                \     'floating-position': 'left-center',
+                \     'floating-width': 50,
+                \     'open-action-strategy': 'sourceWindow',
+                \   },
+                \   'floatingRightside': {
+                  \     'position': 'floating',
+                  \     'floating-position': 'right-center',
+                  \     'floating-width': 50,
+                  \     'open-action-strategy': 'sourceWindow',
+                  \   },
+                  \   'simplify': {
+                    \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+                    \   }
+                    \ }
 
 nmap <C-n> :CocCommand explorer<CR>
 nmap <space>f :CocCommand explorer --preset floating<CR>
@@ -426,19 +442,19 @@ let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 
 let g:ale_linters = {
-\   'ruby': ['standardrb', 'rubocop'],
-\   'eruby': ['erubylint'],
-\}
+      \   'ruby': ['standardrb', 'rubocop'],
+      \   'eruby': ['erubylint'],
+      \}
 
 let g:ale_history_log_output = 1
 
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'ruby': ['standardrb', 'rubocop'],
-\   'javascript': ['prettier', 'eslint'],
-\   'typescript': ['eslint'],
-\   'css': ['prettier']
-\}
+      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'ruby': ['standardrb', 'rubocop'],
+      \   'javascript': ['prettier', 'eslint'],
+      \   'typescript': ['eslint'],
+      \   'css': ['prettier']
+      \}
 
 let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_ruby_rubocop_options = '-D'
