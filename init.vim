@@ -458,4 +458,5 @@ let g:ale_fixers = {
 
 let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_ruby_rubocop_options = '-D'
-let $FZF_DEFAULT_COMMAND="rg --files --hidden"
+
+let $FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{.git}"'
