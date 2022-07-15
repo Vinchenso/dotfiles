@@ -444,6 +444,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \   'ruby': ['standardrb', 'rubocop'],
       \   'eruby': ['erubylint'],
+      \   'javascript': ['prettier', 'eslint'],
       \}
 
 let g:ale_history_log_output = 1
