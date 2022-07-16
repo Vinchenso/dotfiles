@@ -36,7 +36,6 @@ vim.api.nvim_set_keymap('n', 'to', ':tabo<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-S>', ':%s/', { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>t", ":sp<CR> :term<CR> :resize 20N<CR> i", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-N>', ":CocCommand explorer<CR>", { noremap = true })
 
 -- vim.g["netrw_banner"] = 0
 -- vim.g["netrw_liststyle"] = 3

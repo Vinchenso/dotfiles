@@ -8,6 +8,8 @@ vim.api.nvim_set_keymap("i", "<C-Space>", "coc#refresh()", { silent = true, expr
 vim.api.nvim_set_keymap("i", "<TAB>", "pumvisible() ? '<C-n>' : '<TAB>'", {noremap = true, silent = true, expr = true})
 vim.api.nvim_set_keymap("i", "<S-TAB>", "pumvisible() ? '<C-p>' : '<C-h>'", {noremap = true, expr = true})
 vim.api.nvim_set_keymap("i", "<CR>", "pumvisible() ? coc#_select_confirm() : '<C-G>u<CR><C-R>=coc#on_enter()<CR>'", {silent = true, expr = true, noremap = true})
+vim.api.nvim_set_keymap('n', '<C-N>', ":CocCommand explorer<CR>", { noremap = true })
+
 vim.o.hidden = true
 vim.o.backup = false
 vim.o.writebackup = false
