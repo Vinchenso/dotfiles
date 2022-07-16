@@ -7,6 +7,7 @@ end
 
 require('basics')
 require('colors')
+require('move')
 require('telescope-config')
 require('coc-config')
 
@@ -27,6 +28,7 @@ require 'nvim-treesitter.configs'.setup {
 
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
+  use 'fedepujol/move.nvim'
   use { 'neoclide/coc.nvim', branch = 'release' }
   use 'folke/tokyonight.nvim'
   use 'nvim-treesitter/nvim-treesitter'
