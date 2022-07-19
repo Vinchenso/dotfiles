@@ -1,8 +1,9 @@
 # Path to your oh-my-zsh installation.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-#
+. $HOME/.asdf/asdf.sh
 export ZSH="/home/chenso/.oh-my-zsh"
-#
+
+source $HOME/.aliases
 #export TERM=screen-256color
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -56,8 +57,6 @@ killport() { lsof -ti:$1 | xargs kill }
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(git)
-plugins=(zsh-autosuggestions)
-plugins=(zsh-syntax-highlighting)
 
 # User configuration
 
@@ -131,11 +130,6 @@ echo "Adding remote server ..."
 git remote add origin https://github.com/$username/$repo_name.git
 echo "Remote server added ..."
 }
-export FZF_DEFAULT_COMMAND='ag -g ""'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 # load aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
@@ -151,12 +145,11 @@ fpath=($fpath "/home/chenso/.zfunctions")
 autoload -U promptinit; promptinit
 prompt spaceship
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+fpath=($fpath "/home/chenso/.zfunctions")
 
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 export NODE_PATH="/home/chenso/.nvm/versions/node/v10.12.0/lib/node_modules"
