@@ -44,6 +44,7 @@ return require('packer').startup(function()
   use { 'neoclide/coc.nvim', branch = 'release' }
   use 'folke/tokyonight.nvim'
   use 'nvim-treesitter/nvim-treesitter'
+  use 'RRethy/nvim-treesitter-endwise'
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'lukas-reineke/indent-blankline.nvim'
@@ -54,6 +55,7 @@ return require('packer').startup(function()
 
   use { "nvim-telescope/telescope-file-browser.nvim" }
   use "windwp/nvim-autopairs"
+  use "windwp/nvim-ts-autotag"
   use({
     "kylechui/nvim-surround",
     config = function()

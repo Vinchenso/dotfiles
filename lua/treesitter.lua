@@ -16,5 +16,8 @@ configs.setup({
   endwise = {
       enable = true,
   },
+  autotag = {
+    enable = true,
+  },
 	indent = { enable = true, disable = { "python", "css" } },
 })
