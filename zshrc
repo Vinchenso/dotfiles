@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh installation.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 . $HOME/.asdf/asdf.sh
+
 export ZSH="/home/chenso/.oh-my-zsh"
 
 source $HOME/.aliases

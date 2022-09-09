@@ -46,13 +46,14 @@ return require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter'
   use 'RRethy/nvim-treesitter-endwise'
   use 'tpope/vim-commentary'
+
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'lukas-reineke/indent-blankline.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
-
+  use"christoomey/vim-tmux-navigator"
   use { "nvim-telescope/telescope-file-browser.nvim" }
   use "windwp/nvim-autopairs"
   use "windwp/nvim-ts-autotag"
