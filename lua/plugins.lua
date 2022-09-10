@@ -44,7 +44,6 @@ return require('packer').startup(function()
   
   use 'fedepujol/move.nvim'
   use 'folke/tokyonight.nvim'
-  use 'williamboman/nvim-lsp-installer'
   use 'nvim-treesitter/nvim-treesitter'
 
   use { 'kyazdani42/nvim-web-devicons' }
@@ -94,8 +93,6 @@ return require('packer').startup(function()
 
   use  "neovim/nvim-lspconfig"
 use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  -- use "williamboman/mason.nvim"
-  -- use "williamboman/mason-lspconfig.nvim"
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
