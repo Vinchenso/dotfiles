@@ -7,8 +7,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"git",
 		"clone",
 		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
+		"1", "https://github.com/wbthomason/packer.nvim",
 		install_path,
 	})
 	print("Installing packer close and reopen Neovim...")
@@ -40,10 +39,15 @@ packer.init({
 
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
+  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  
   use 'fedepujol/move.nvim'
-  use { 'neoclide/coc.nvim', branch = 'release' }
   use 'folke/tokyonight.nvim'
+  use 'williamboman/nvim-lsp-installer'
   use 'nvim-treesitter/nvim-treesitter'
+
+  use { 'kyazdani42/nvim-web-devicons' }
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'lukas-reineke/indent-blankline.nvim'
@@ -60,6 +64,42 @@ use({
         })
     end
 })
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+
+  -- cmp plugins
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lua"
+ 
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
+
+  use {
+	'windwp/nvim-ts-autotag',
+    config = function() require("nvim-ts-autotag").setup {} end
+}
+
+  -- use 'glepnir/lspsaga.nvim'
+
+  use  "neovim/nvim-lspconfig"
+use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  -- use "williamboman/mason.nvim"
+  -- use "williamboman/mason-lspconfig.nvim"
+
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+  -- LSP
+use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+
+
   if packer_bootstrap then
     require('packer').sync()
   end
