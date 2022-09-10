@@ -21,3 +21,18 @@ configs.setup({
   },
 	indent = { enable = true, disable = { "python", "css" } },
 })
+
+local vim = vim
+local opt = vim.opt
+
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+vim.api.nvim_create_autocmd('BufRead', {
+   callback = function()
+      vim.api.nvim_create_autocmd('BufWinEnter', {
+         once = true,
+         command = 'normal! zx zR'
+      })
+   end
+})
