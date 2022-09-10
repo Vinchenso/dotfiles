@@ -48,12 +48,6 @@ vim.api.nvim_set_keymap("c", "Vs", "vs", {noremap = true, silent = true})
 -- Telescope file_browser 
 vim.api.nvim_set_keymap("n", "<leader>n", ":Telescope file_browser<cr>", {noremap = true, silent = true})
 
-
-
--- vim.g["netrw_banner"] = 0
--- vim.g["netrw_liststyle"] = 3
--- vim.g["netrw_winsize"] = 25
-
 vim.cmd([[
   hi ActiveWindow guibg=#1B1B26
   hi InactiveWindow guibg=#2d2d3b
