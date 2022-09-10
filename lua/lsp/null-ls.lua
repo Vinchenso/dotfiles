@@ -12,9 +12,16 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
-    diagnostics.prettier,
+
     diagnostics.eslint,
-    formatting.eslint
+
+    diagnostics.standardrb,
+    formatting.standardrb,
+
+    diagnostics.rubocop,
+    formatting.rubocop,
+
+
 	},
 })
 
@@ -27,5 +34,3 @@ vim.diagnostic.config({
     source = "always", -- Or "if_many"
   },
 })
-
-
