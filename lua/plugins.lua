@@ -46,7 +46,6 @@ return require('packer').startup(function()
   use 'folke/tokyonight.nvim'
   use 'nvim-treesitter/nvim-treesitter'
 
-  use { 'kyazdani42/nvim-web-devicons' }
   use 'RRethy/nvim-treesitter-endwise'
   use 'tpope/vim-commentary'
 
@@ -56,10 +55,11 @@ return require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+  use 'kyazdani42/nvim-web-devicons'
+  use 'kyazdani42/nvim-tree.lua'
+
   use"christoomey/vim-tmux-navigator"
   use { "nvim-telescope/telescope-file-browser.nvim" }
-  use "windwp/nvim-autopairs"
-  use "windwp/nvim-ts-autotag"
   use({
     "kylechui/nvim-surround",
     config = function()
