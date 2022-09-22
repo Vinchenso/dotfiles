@@ -10,4 +10,4 @@ require("lsp.null-ls")
 
 local protocol = require('vim.lsp.protocol')
 
-nvim_lsp['rubocop'].setup{}
+-- nvim_lsp['rubocop'].setup{}
