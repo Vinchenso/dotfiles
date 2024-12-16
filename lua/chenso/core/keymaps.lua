@@ -15,8 +15,7 @@ keymap.set("c", "Wq", "wq")
 keymap.set("c", "Q!", "q!")
 keymap.set("c", "W!", "w!")
 keymap.set("c", "W", "w")
-keymap.set("c", "Q", "q")
-keymap.set("c", "Vs", "vs")
+keymap.set("c", "Q", "q") keymap.set("c", "Vs", "vs")
 
 ----------------------
 -- Plugin Keybinds
@@ -27,13 +26,15 @@ keymap.set("n", "<C-p>", "<cmd>Telescope find_files<cr>") -- find files within c
 keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
 keymap.set("n", "<leader><leader>", "<cmd>Telescope oldfiles<cr>") -- list available help tags
 
+keymap.set("n", "K", vim.lsp.buf.hover, {})
+keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
 
-
-      keymap.set("n", "K", vim.lsp.buf.hover, {})
-      keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-      keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-      keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-      keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
-
-
+-- Navigate vim panes better
+vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
+vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
+vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
+vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
