@@ -1,15 +1,17 @@
-require("chenso.plugins-setup")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
 require("chenso.core.options")
-require("chenso.core.colorscheme")
 require("chenso.core.keymaps")
-require("chenso.plugins.lualine")
-require("chenso.plugins.nvim-tree")
-require("chenso.plugins.telescope")
-require("chenso.plugins.nvim-cmp")
-require("chenso.plugins.lsp.mason")
-require("chenso.plugins.lsp.lspsaga")
-require("chenso.plugins.lsp.lspconfig")
-require("chenso.plugins.lsp.null-ls")
-require("chenso.plugins.autopairs")
-require("chenso.plugins.treesitter")
-require("chenso.plugins.gitsigns")
+
+require("lazy").setup("chenso.plugins")
